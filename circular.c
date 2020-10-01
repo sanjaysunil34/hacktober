@@ -1,99 +1,73 @@
 #include <stdio.h>
-typedef struct{
-    int ar[10];
-} queue;
 
-queue q;
-int front=0;
-int rear=0;
-//fag 0 aakka
-int flag=1;
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+   
+    int queue[10],front=-1,rear=-1,ch,n,i,q;
+    scanf("%d",&q);
+    while(q--)
+    {
 
-void enqueue()
-{
-    int n;
+    scanf("%d",&ch);
+    switch (ch) {
+    case 1:
     scanf("%d",&n);
-    if(front!=rear || flag==0)
+    if(front==-1)
     {
-        flag=1;
-        q.ar[rear]=n;
-        if(rear==9)
-        {
-            rear=0;
-        }
-        else 
-        {
-            rear++;
-        }
+        front++;
+        rear++;
+        queue[rear]=n;
     }
-}
-
-void dequeue()
-{
-    int a;
-    if(front!=rear)
+   
+    else if(rear==9 && front!=0)
     {
-        a=q.ar[front];
-        if(front==9)
-        {
-            front=0;
-        }
-        else
-        {
-            front++;
-        }
-        if(front==rear)
-        {
-            flag=0;
-        }
-        printf("%d\n",a);
+        rear=0;
+        queue[rear]=n;
     }
     else {
-    printf("-1\n");
+    rear++;
+    queue[rear]=n;
     }
-}
+    
+    break;
+    case 2:
+    if(front==rear)
+    {   printf("%d\n",queue[front]);
+        front=rear=-1;
 
-void display()
-{
-    int a,b;
-    if(front!=rear)
+    }
+    if(front==9)
     {
-        a=front;
-        b=rear;
-        while(a!=b){
-        printf("%d ",q.ar[a]);
-            if(a==9)
-            {
-                a=0;
-            }
-            else
-            {
-                a++;
-            }
-        }
-        printf("\n");
+        printf("%d\n",queue[front]);
+        front=0;
     }
     else {
-    {printf("-1\n");}
+        printf("%d\n",queue[front]);
+    front++;
     }
-}
 
-int main()
-{
-    int q, choice;
-    scanf("%d", &q);
-    //printf("%d\n",q);
-    while(q--) {
-        scanf("%d", &choice);
-        //printf("%d\n",choice);
-        switch(choice) {
-            case 1: enqueue();
-                    break;
-            case 2: dequeue();
-                    break;
-            case 3: display();
-                    break;
-        }
+    break;
+    case 3:
+    if(rear>=front)
+    {
+    for( i=front;i<=rear;i++)
+    printf("%d ",queue[i]);
+    }
+    else  {
+    for( i=front;i<=9;i++)
+    {
+        printf("%d ",queue[i]);
+    }
+    for(i=0;i<=rear;i++)
+    { 
+        printf("%d ",queue[i]);
+
+    }
+    }
+    printf("\n");
+    break;
+    }
     }
     return 0;
+    
 }
