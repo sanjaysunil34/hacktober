@@ -1,55 +1,53 @@
-#include<stdio.h>
+#include <stdio.h>
 
-typedef struct {
-    int a[10];
-} Queue;
+struct Queue{
+    int arr[10];
+}q;
 
-Queue q;
-int front=0;
-int rear=0;
+int front=-1,rear=-1;
 
 void enqueue(int n) {
-    int t,te;
-    if(rear<9)
-    {
-        q.a[rear]=n;
-        t=rear;
-        while(q.a[t]<q.a[t-1] && t>front)
-        {
-            te=q.a[t];
-            q.a[t]=q.a[t-1];
-            q.a[t-1]=te;
-            t--;
+    if(rear==-1){
+        front=rear=0;  
+        q.arr[rear]=n;
+    }
+    else if(rear<9){
+        for(int i=front;i<=rear;i++){
+            if(q.arr[i]>n){
+                for(int j=rear+1;j>i;j--)
+                    q.arr[j]=q.arr[j-1]; 
+                q.arr[i]=n;  
+                return;
+            }
         }
-        rear++;
-
+        q.arr[++rear]=n;
     }
 }
 
 int dequeue() {
-    if(rear == front)
-    {
+    if(front==-1)
         return -1;
-    }
-    else 
-    {
-        front++;
-        return q.a[front-1];   
+    else {
+        if(front == rear){
+            int temp=q.arr[front];
+            front = rear = -1;
+            return temp;
+        } 
+        return q.arr[front++];
     }
 }
 
 int main() {
-    int q, choice, n;
-    scanf("%d", &q);
-    while(q--) {
-        scanf("%d", &choice);
-        switch(choice) {
-            case 1: scanf("%d",&n);
-                    enqueue(n);
-                    break;
-            case 2: printf("%d\n", dequeue());
-                    break;
+    int n,t,qu;
+    scanf("%d",&qu);
+    while(qu--){
+        scanf("%d",&t);
+        if(t==1){
+            scanf("%d",&n);
+            enqueue(n);
         }
+        else if(t==2)
+            printf("%d\n",dequeue());
     }
     return 0;
 }
