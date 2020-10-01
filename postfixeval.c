@@ -9,7 +9,7 @@ typedef struct {
 
 Stack s;
 // top ivde -1 aakk
-int top=0;
+int top=-1;
 
 void push(float n) {
 
