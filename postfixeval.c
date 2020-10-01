@@ -19,7 +19,7 @@ void push(float n) {
 
 float pop() {
 
-    top--;
+    top=top--;
     return s.a[top+1];
 }
 
