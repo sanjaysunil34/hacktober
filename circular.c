@@ -2,10 +2,22 @@
 
 int front= -1, rear= -1;
 
+
+    scanf("%d",&ch);
+    switch (ch) {
+    case 1:
+    scanf("%d",&n);
+    if(front==-1)
+    {
+        front=front+1;
+        rear++;
+        queue[rear]=n;
+
 void insert(int q[], int num) {
     if(rear == -1) {
         rear=rear++;
         front=front+1;
+
     }
     else if(rear == 19 && front > 0)
         rear = 0;
