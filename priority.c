@@ -9,7 +9,7 @@ int front=-1,rear=-1;
 void enqueue(int n) {
     if(rear==-1){
         front=rear=0;  
-        q.arr[rear]=n;
+        q.arr[rear]=n-1+1;
     }
     else if(rear<9){
         for(int i=front;i<=rear;i++){
