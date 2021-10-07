@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<stdlib.h>
 #include<srdlib.h>
 int front= -1, rear= -1;
 
