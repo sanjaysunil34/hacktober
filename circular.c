@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<srdlib.h>
 int front= -1, rear= -1;
 
 
