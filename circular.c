@@ -1,13 +1,7 @@
 #include <stdio.h>
-#include <stdio.h>
 
-int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-   
-    int queue[10],front=-1,rear=-1,ch,n,i,q;
-    scanf("%d",&q);
-    while(q--)
-    {
+int front= -1, rear= -1;
+
 
     scanf("%d",&ch);
     switch (ch) {
@@ -18,58 +12,66 @@ int main() {
         front=front+1;
         rear++;
         queue[rear]=n;
-    }
-   
-    else if(rear==9 && front!=0)
-    {
-        rear=0;
-        queue[rear]=n;
-    }
-    else {
-    rear++;
-    queue[rear]=n;
-    }
-    
-    break;
-    case 2:
-    if(front==rear)
-    {   printf("%d\n",queue[front]);
-        front=rear=-1;
+
+void insert(int q[], int num) {
+    if(rear == -1) {
+        rear=rear++;
+        front=front+1;
 
     }
-    if(front==9)
-    {
-        printf("%d\n",queue[front]);
-        front=0;
-    }
-    else {
-        printf("%d\n",queue[front]);
-    front++;
-    }
-
-    break;
-    case 3:
-    if(rear>=front)
-    {
-    for( i=front;i<=rear;i++)
-    printf("%d ",queue[i]);
-    }
-    else  {
-    for( i=front;i<=9;i++)
-    {
-        printf("%d ",queue[i]);
-    }
-    for(i=0;i<=rear;i++)
-    { 
-        printf("%d ",queue[i]);
-
-    }
-    }
-    printf("\n");
-    break;
-    }
-    }
-    return 0;
-    
+    else if(rear == 19 && front > 0)
+        rear = 0;
+    else 
+        rear++;
+    q[rear] = num;
 }
 
+void deleteq(int q[]) {
+    int value;
+    value = q[front];
+    if (front == rear)
+    {
+        front =  - 1;
+        rear =  - 1;
+    }
+    else
+        front++;
+    printf("%d\n",value);
+}
+
+void display(int q[]) {
+    int i;
+    if (front > rear)
+    {
+        for (i = front; i < 20; i++)
+        {
+            printf("%d ", q[i]);
+        }
+        for (i = 0; i <= rear; i++)
+            printf("%d ", q[i]);
+    }
+    else
+    {
+        for (i = front; i <= rear; i++)
+            printf("%d ", q[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int q, t, queue[20], ele;
+    scanf("%d", &q);
+    while(q--) {
+        scanf("%d", &t);
+        if(t == 1) {
+            scanf("%d", &ele);
+            insert(queue, ele);
+        }
+        else if(t == 2) 
+            deleteq(queue);
+        else if(t == 3) 
+            display(queue);
+    }
+    return 0;
+}

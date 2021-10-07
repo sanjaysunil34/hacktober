@@ -8,7 +8,8 @@ typedef struct {
 } Stack;
 
 Stack s;
-int top=0;
+// top ivde -1 aakk
+int top=-1;
 
 void push(float n) {
 
@@ -19,7 +20,7 @@ void push(float n) {
 
 float pop() {
 
-    top=top--;
+    top--;
     return s.a[top+1];
 }
 
