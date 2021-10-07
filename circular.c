@@ -4,8 +4,8 @@ int front= -1, rear= -1;
 
 void insert(int q[], int num) {
     if(rear == -1) {
-        rear++;
-        front++;
+        rear=rear+1;
+        front=front+1;
     }
     else if(rear == 19 && front > 0)
         rear = 0;
