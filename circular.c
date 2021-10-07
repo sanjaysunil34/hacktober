@@ -15,7 +15,7 @@ int main() {
     scanf("%d",&n);
     if(front==-1)
     {
-        front++;
+        front=front+1;
         rear++;
         queue[rear]=n;
     }
