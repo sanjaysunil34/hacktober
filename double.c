@@ -13,7 +13,7 @@ int main() {
             scanf("%d",&num);
             if(front==-1)
             {
-                front++;
+                front=front+1;
                 rear++;
                 queue[front]=num;
             }
