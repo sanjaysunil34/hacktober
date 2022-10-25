@@ -3,7 +3,7 @@
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int ch,queue[20],i,q,front=-1,rear=-1,num;
+    int ch,queue[25],i,q,front=-1,rear=-1,num;
     scanf("%d",&q);
     while(q--)
     {
