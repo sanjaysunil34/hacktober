@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<stdlib.h>
 struct Queue{
     int arr[10];
 }q;
